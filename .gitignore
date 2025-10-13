@@ -1,0 +1,79 @@
+
+venv/
+.venv/
+env/
+
+# Byte-code files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Compiled extension modules
+*.so
+*.mo
+
+# Distribution / packaging
+.Python
+build/
+dist/
+develop-eggs/
+.eggs/
+*.egg-info/
+.install-history
+htmlcov/
+.nox/
+.tox/
+.mypy_cache/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Third-party packages
+# Packages installed locally (if not using venv, though venv is standard)
+lib/
+include/
+bin/
+share/
+
+
+.DS_Store
+.Trashes
+# Thumbnails
+._*
+
+# =================
+# LangGraph / AI / Data Science Artifacts
+# =================
+
+# Data files (often large and shouldn't be version controlled)
+*.csv
+*.tsv
+*.data
+*.sqlite
+*.db
+
+# Notebooks (keep if tracking changes, ignore if just scratch work)
+# If you want to ignore notebooks, uncomment the line below:
+# *.ipynb
+
+# Model files / Checkpoints (often large)
+*.pt
+*.pth
+*.h5
+*.onnx
+*.pkl
+*.joblib
+checkpoints/
+models/
+
+# Logs and debugging
+*.log
+logs/
+.history
+.vscode/
+
+# Ignore local configuration files
+*.ini
+*.cfg
+*.conf
+.env
+.flaskenv

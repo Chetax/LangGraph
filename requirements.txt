@@ -1,0 +1,4 @@
+langgraph
+langchain
+dotenv
+langchain-google-genai #beacause we are working with gemini-api 
