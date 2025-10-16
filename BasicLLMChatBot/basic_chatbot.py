@@ -9,7 +9,7 @@ from langgraph.checkpoint.memory import MemorySaver
 
 load_dotenv()
 llm=ChatGoogleGenerativeAI(
-    model='gemini-2.5-flash'
+    model='gemini-2.0-flash-lite'
 )
 
 
@@ -39,12 +39,7 @@ graph.add_edge(START,'chat_node')
 graph.add_edge('chat_node',END)
 
 chatbot=graph.compile(checkpointer=checkpointer)
-chatbot
 
-thread_id='1'
 
-config={
-        'configurable':{'thread_id':thread_id}
-    }
 
 
