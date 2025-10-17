@@ -1,9 +1,9 @@
 import streamlit as st 
-from basic_chatbot import chatbot 
+from chatbot_backend import chatbot 
 from langchain_core.messages import HumanMessage 
 import uuid
 from datetime import datetime
-
+from chatbot_backend import get_all_threads
 def generate_random_thread_id():
       thread_id=uuid.uuid4()
       return str(thread_id)
@@ -11,6 +11,7 @@ def generate_random_thread_id():
 def clear_message_history():
     st.session_state['thread_id']=generate_random_thread_id()
     add_thread(st.session_state['thread_id'])
+
     st.session_state['message_history']=[]
 
 def add_thread(thread_id):
@@ -18,15 +19,19 @@ def add_thread(thread_id):
     if thread_id not in existing_threads:
         st.session_state['chat_thread'].append({'thread':thread_id,'content':f'New chat at {datetime.now().strftime("%H:%M:%S")}'})
 
-
 def load_chat_history(threadId):
-    return chatbot.get_state(config={'configurable':{'thread_id':threadId} }).values['messages']
+    state = chatbot.get_state(config={'configurable':{'thread_id':threadId}})
+    
 
-
+    if state and state.values:
+        return state.values['messages']
+    else:
+        return []
+    
 if 'message_history' not in st.session_state:
      st.session_state['message_history']=[]
 if  'chat_thread' not in st.session_state:
-    st.session_state['chat_thread']=[]
+    st.session_state['chat_thread']=get_all_threads()
 
 if 'thread_id' not in st.session_state:
     st.session_state['thread_id']=generate_random_thread_id()
